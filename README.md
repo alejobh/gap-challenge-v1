@@ -1,7 +1,7 @@
 # GAP PHP & React Challenge
 Git repository for the GAP challenge, in a variation of MVC
 
-## PLEASE DO NOT AVOID READING THIS
+## PLEASE READ THE FOLLOWING
 
 ## Getting Started
 
