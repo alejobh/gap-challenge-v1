@@ -1,7 +1,7 @@
 # GAP PHP & React Challenge
 Git repository for the GAP challenge, in a variation of MVC
 
-## PLEASE DO NOT AVOID READING THIS
+## PLEASE READ THE FOLLOWING
 
 ## Getting Started
 
@@ -51,7 +51,19 @@ End with an example of getting some data out of the system or using it for a lit
 
 ### Running the project
 
-Now you had every dependency installed, you can now run the project
+Now lets run the migrations for the necessary tables
+
+```
+php artisan migrate
+```
+
+Ok, lets seed the database with some random data
+
+```
+php artisan db:seed
+```
+
+And now that you had every dependency installed and the database prepared, you can now run the project
 
 ```
 php artisan serve
