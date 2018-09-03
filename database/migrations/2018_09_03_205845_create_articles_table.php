@@ -21,7 +21,7 @@ class CreateArticlesTable extends Migration
       * The accepted datatype for money, according to GAAP (Generally Accepted Accounting Principles) is Decimal (9, 4)....
       * if you need bigger numbers then Decimal (13, 4).
       */
-      $table->decimal('price', 13, 4);
+      $table->decimal('price', 13, 2);
       $table->integer('total_in_shelf');
       $table->integer('total_in_vault');
 
