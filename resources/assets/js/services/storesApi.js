@@ -1,4 +1,4 @@
-import {apiGet} from './apiGateway.js';
+import {apiGet, apiDelete} from './apiGateway.js';
 
 const STORE_PATH = '/services/stores/';
 
@@ -7,6 +7,12 @@ const fetchAllStores = (params) => {
   return apiGet(url);
 }
 
+const fetchDeleteStore = (params) => {
+  const url = params===undefined ? STORE_PATH : STORE_PATH + params;
+  return apiDelete(url);
+}
+
 export {
-  fetchAllStores
+  fetchAllStores,
+  fetchDeleteStore
 }

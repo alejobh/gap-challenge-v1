@@ -1,37 +1,50 @@
 import React from 'react';
 import StoreItem from './store_item';
+
 const StoresTemplate = (props) => {
+
   const storesRender = () => props.stores.map( (store,i) =>{
-    return (<StoreItem key={store.id} store={store}/>)
+    return (<StoreItem key={store.id} onClickDelete={props.deleteStore} onClickEdit={props.editStore} store={store}/>)
   });
+
+  const handleHideModal = () => {
+    this.setState({view: {showModal: false}})
+  }
+
+  const handleShowModal = () => {
+    this.setState({view: {showModal: true}})
+  }
+
 
   return(
     <div>
-      <h1>Stores Table</h1>
-      <h3>The following table contains all the</h3>
+      <div className="container">
+        <h1>Stores Table</h1>
+        <p>The following table contains all the stores in the application.</p>
 
-      { (props.stores.length>0) ?
-        (
-          <div className="table-responsive">
-            <table className="table table-light table-hover">
-              <thead className="thead-dark">
-                <tr>
-                  <th scope="col">Action</th>
-                  <th scope="col">ID</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Address</th>
-                </tr>
-              </thead>
-              <tbody>
-                {storesRender()}
-              </tbody>
-            </table>
-          </div>
-        )
+        { (props.stores.length>0) ?
+          (
+            <div className="table-responsive">
+              <table className="table table-light table-hover">
+                <thead className="thead-dark">
+                  <tr>
+                    <th scope="col">Actions</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {storesRender()}
+                </tbody>
+              </table>
+            </div>
+          )
 
-        :
-        <div>No hay tiendas actualmente</div>
-      }
+          :
+          <h3>There is no stores added</h3>
+        }
+      </div>
     </div>
   )
 }

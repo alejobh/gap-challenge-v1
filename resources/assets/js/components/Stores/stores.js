@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 
 import StoresTemplate from './stores_template';
-import {fetchAllStores} from '../../services/storesApi';
+import {fetchAllStores, fetchDeleteStore} from '../../services/storesApi';
 
 class Stores extends Component {
 
   constructor() {
     super();
+
+    this.editStore = this.editStore.bind(this);
+
     this.state = {
       stores: [],
       loadingData: true
     };
   }
-
 
   componentWillMount() {
     this.setState({
@@ -27,13 +29,33 @@ class Stores extends Component {
     })
   }
 
+  editStore (store){
+    //HANDLE MODAL
+    console.log("clicked edit", store);
+  }
+
+  deleteStore (store){
+    fetchDeleteStore(store.id)
+    .then(data => {
+      if(data.success===true) {
+        //DELETE STORE
+        let filteredStores = this.state.stores.filter(item => item !== store)
+        this.setState({
+          stores: filteredStores
+        });        
+      }
+    })
+  }
+
   render(){
     return (
       <div>
         { this.state.loadingData!==true ? (
-          <StoresTemplate stores={this.state.stores}/>
+          <StoresTemplate editStore={this.editStore.bind(this)} deleteStore={this.deleteStore.bind(this)} stores={this.state.stores}/>
         ) : (
-          <div>Loading...</div>
+          <div className="container">
+            <h1>Loading...</h1>
+          </div>
         )}
       </div>
     )

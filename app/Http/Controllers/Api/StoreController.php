@@ -21,4 +21,13 @@ class StoreController extends Controller
     return response()->json(['stores'=> $stores, 'success' => true, 'total_elements'=>$total]);
   }
 
+  public function deleteStore($id)
+  {
+    $store = Store::find($id);
+    $store->getArticles()->delete();
+    $store->delete();
+
+    return response()->json(['success' => true, 'msg'=>'deleted']);
+  }
+
 }
