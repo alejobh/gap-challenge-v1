@@ -20,7 +20,7 @@ class AuthBasic
     $secure_request = AuthHelper::checkAuth($request->header('Authorization'));
     if($secure_request === false) {
       //If is not valid then will return 401 Not Authorized
-      return response()->json(['success' => false, 'error_code'=> 401, 'error_msg' => 'Not authorized']);
+      return response()->json(['success' => false, 'error_code'=> 401, 'error_msg' => config('constants.HTTP.401')]);
     }
     //if its valid it will continue in the next
     return $next($request);

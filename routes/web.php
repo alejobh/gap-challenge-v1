@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/', function () {
+  return view('app');
+});
+
 Route::group(['prefix'=>'services', 'middleware'=>['auth_basic']], function() {
   Route::group(['prefix'=>'stores'], function() {
     Route::get('/', ['uses'=>'Api\StoreController@getStores']);
