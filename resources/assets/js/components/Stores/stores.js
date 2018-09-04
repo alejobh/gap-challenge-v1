@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import StoresTemplate from './stores_template';
-import {fetchAllStores, fetchDeleteStore} from '../../services/storesApi';
+import {fetchAllStores, fetchDeleteStore, fetchPutStore} from '../../services/storesApi';
 
 class Stores extends Component {
 
@@ -42,7 +42,7 @@ class Stores extends Component {
         let filteredStores = this.state.stores.filter(item => item !== store)
         this.setState({
           stores: filteredStores
-        });        
+        });
       }
     })
   }

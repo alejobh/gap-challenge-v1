@@ -12,7 +12,13 @@ const fetchDeleteStore = (params) => {
   return apiDelete(url);
 }
 
+const fetchDeleteStore = (params, body) => {
+  const url = params===undefined ? STORE_PATH : STORE_PATH + params;
+  return apiPut(url, body);
+}
+
 export {
   fetchAllStores,
-  fetchDeleteStore
+  fetchDeleteStore,
+  fetchPutStore
 }

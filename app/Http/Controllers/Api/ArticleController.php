@@ -55,6 +55,41 @@ class ArticleController extends Controller
       }
     }
 
+    public function deleteArticle($id)
+    {
+      return \DB::transaction(function () use ($id) {
+        $article = Article::find($id);
+        $article->delete();
+        return response()->json(['success' => true, 'msg'=>'deleted']);
+      });
+    }
+
+    public function updateArticle(Request $request, $id)
+    {
+      return \DB::transaction(function () use ($id, $request) {
+        $this->validate($request, [
+          'name' => 'required|max:255',
+          'description' => 'required|string',
+          'price' => 'required',
+          'total_in_shelf' => 'required',
+          'total_in_vault' => 'required',
+        ]);
+        $article = Article::find($id);
+        if($article!=null){
+          $article->name = $request['name'];
+          $article->description = $request['description'];
+          $article->price = $request['price'];
+          $article->total_in_shelf = $request['total_in_shelf'];
+          $article->total_in_vault = $request['total_in_vault'];
+          $store->save();
+          return response()->json(['success' => true, 'store'=>$store]);
+        } else {
+          return response()->json(['success' => false, 'error_code'=> 404, 'error_msg' => config('constants.HTTP.404')]);
+        }
+      });
+
+    }
+
     /*
     * The next function is to solve that an article will always have a store_name with {id, name} and we need just the name
     * @return Collection of articles

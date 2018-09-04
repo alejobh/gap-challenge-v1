@@ -1056,6 +1056,22 @@ var apiDelete = function apiDelete(url) {
   });
 };
 
+var apiPut = function apiPut(url) {
+  return axios.delete(API_ROOT + url, {
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': authorization
+    }
+  }).then(function (response) {
+    if (response.status !== 200) {
+      alert("Network failure");
+    }
+    return response.data;
+  }).catch(function (error) {
+    console.log('ERROR: Check the host ->', error);
+  });
+};
+
 
 
 /***/ }),

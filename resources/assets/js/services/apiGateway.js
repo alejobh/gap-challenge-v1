@@ -62,8 +62,28 @@ const apiDelete = (url) => {
   });
 }
 
+const apiPut = (url, body) => {
+  return axios.put(API_ROOT + url, {
+    headers: {
+      'Accept': 'application/json',
+      'Authorization': authorization
+    },
+    body: JSON.stringify(body)
+  })
+  .then(response => {
+    if (response.status!==200) {
+      alert("Network failure");
+    }
+    return response.data;
+  })
+  .catch(error => {
+    console.log('ERROR: Check the host ->', error);
+  });
+}
+
 export {
   apiGet,
   apiPost,
   apiDelete,
+  apiPut
 }
