@@ -7,7 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
   protected $table = 'articles';
-  protected $fillable = ['name', 'description', 'price', 'total_in_shelf', 'total_in_vault', 'store_id'];
+  protected $fillable = ['name', 'description', 'price', 'total_in_shelf', 'total_in_vault'];
+
+  //SPECIFIED IN DOCS THAT NOT RETURN THE TIMESTAMPS AND THE store_id
+  protected $hidden = ['created_at', 'updated_at', 'store_id'];
+
+  /*
+  * this function returns just the name of the store that the Article belongs
+  * @return App\Store
+  */
+  public function store_name() {
+    return $this->belongsTo('App\Store', 'store_id', 'id');
+  }
 
   /*
   * this function returns a single App\Store that the Article belongs (relationship)
