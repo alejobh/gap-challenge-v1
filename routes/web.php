@@ -12,5 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('app');
+  return view('app');
+});
+
+Route::group(['prefix'=>'services', 'middleware'=>['auth_basic']], function() {
+  Route::group(['prefix'=>'stores'], function() {
+    Route::get('/', ['uses'=>'Api\StoreController@getStores']);
+  });
+
+  Route::group(['prefix'=>'articles'], function() {
+    Route::get('/', ['uses'=>'Api\ArticleController@getArticles']);
+    Route::get('stores/{id}', ['uses'=>'Api\ArticleController@getArticlesByStore']);
+  });
 });
