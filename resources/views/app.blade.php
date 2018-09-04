@@ -7,19 +7,11 @@
 
         <title>GAP Challenge</title>
 
+        <!-- CSRF TOKEN -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Poppins', sans-serif;
-                height: 100vh;
-                margin: 0;
-            }
-        </style>
 
         <link href="/css/app.css" rel="stylesheet" type="text/css">
 
