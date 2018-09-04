@@ -10,8 +10,8 @@ class AuthHelper
   */
   public static function CheckAuth($auth_header) {
 
-    $USERNAME = 'my_user';
-    $PASSWORD = 'my_password';
+    $USERNAME = config('constants.AUTH.USERNAME');
+    $PASSWORD = config('constants.AUTH.PASSWORD');
     //Checks if the header exists
     if($auth_header==null) {
       return false;

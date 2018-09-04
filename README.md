@@ -49,6 +49,23 @@ npm install && npm run dev
 
 End with an example of getting some data out of the system or using it for a little demo
 
+### MySQL Requirement
+
+
+This app was created using MySQL, check if you have it installed on your machine,
+
+#### User root or whatever you want
+
+For the purpose of the challenge just check in the .env file the mysql statement variables and modify it to have access to the creation of a database
+
+#### Creating the database
+
+Create a database named gap
+
+```
+mysql>create database gap;
+```
+
 ### Running the project
 
 Now lets run the migrations for the necessary tables
@@ -96,8 +113,6 @@ Not necessary for this challenge
 ## Author
 
 * **Alejandro Bermúdez Holguín** - *For:* - [GAP](https://www.growthaccelerationpartners.com/)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 

@@ -34,7 +34,7 @@ class ArticleController extends Controller
 
         //Store not found (is null)
         if($store===null) {
-          return response()->json(['success' => false, 'error_code'=> 404, 'error_msg' => 'Record not Found']);
+          return response()->json(['success' => false, 'error_code'=> 404, 'error_msg' => config('constants.HTTP.404')]);
         }
 
         /*
@@ -51,7 +51,7 @@ class ArticleController extends Controller
         return response()->json(['articles'=> $articles_solved, 'success' => true, 'total_elements'=>$total]);
 
       } else {
-        return response()->json(['success' => false, 'error_code'=> 400, 'error_msg' => 'Bad Request']);
+        return response()->json(['success' => false, 'error_code'=> 400, 'error_msg' => config('constants.HTTP.400')]);
       }
     }
 
