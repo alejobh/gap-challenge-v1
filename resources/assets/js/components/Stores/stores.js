@@ -8,11 +8,9 @@ class Stores extends Component {
   constructor() {
     super();
 
-    this.editStore = this.editStore.bind(this);
-
     this.state = {
       stores: [],
-      loadingData: true
+      loadingData: true,
     };
   }
 
@@ -31,7 +29,7 @@ class Stores extends Component {
 
   editStore (store){
     //HANDLE MODAL
-    console.log("clicked edit", store);
+    console.log("EDITING STORE", store);
   }
 
   deleteStore (store){
@@ -46,6 +44,7 @@ class Stores extends Component {
       }
     })
   }
+
 
   render(){
     return (

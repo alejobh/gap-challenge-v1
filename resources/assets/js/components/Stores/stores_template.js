@@ -1,20 +1,10 @@
 import React from 'react';
 import StoreItem from './store_item';
-
 const StoresTemplate = (props) => {
 
   const storesRender = () => props.stores.map( (store,i) =>{
     return (<StoreItem key={store.id} onClickDelete={props.deleteStore} onClickEdit={props.editStore} store={store}/>)
   });
-
-  const handleHideModal = () => {
-    this.setState({view: {showModal: false}})
-  }
-
-  const handleShowModal = () => {
-    this.setState({view: {showModal: true}})
-  }
-
 
   return(
     <div>

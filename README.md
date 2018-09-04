@@ -68,16 +68,10 @@ mysql>create database gap;
 
 ### Running the project
 
-Now lets run the migrations for the necessary tables
+Now lets run the migrations for the necessary tables and seed the database with some random data
 
 ```
-php artisan migrate
-```
-
-Ok, lets seed the database with some random data
-
-```
-php artisan db:seed
+php artisan migrate --seed
 ```
 
 And now that you had every dependency installed and the database prepared, you can now run the project
