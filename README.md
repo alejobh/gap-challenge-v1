@@ -74,13 +74,11 @@ Now lets run the migrations for the necessary tables and seed the database with 
 php artisan migrate --seed
 ```
 
-And now that you had every dependency installed and the database prepared, you can now run the project
+And now that you had every dependency installed and the database prepared, you can now run the project :D
 
 ```
 php artisan serve
 ```
-
-Then you have to run npm install && npm run dev in order to install the javascript dependencies
 
 ## Running the tests
 
