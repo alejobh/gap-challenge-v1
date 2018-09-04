@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Helpers\AuthHelper as AuthHelper;
+use App\Helpers\AuthHelper;
 
 class AuthBasic
 {
@@ -16,10 +16,13 @@ class AuthBasic
   */
   public function handle($request, Closure $next)
   {
-    $secure_request = AuthHelper::CheckAuth($request->header('Authorization'));
+    //Calls the method CheckAuth of the App\Helpers\AuthHelper Helper Class sending the Authorization Header to check if its valid or not
+    $secure_request = AuthHelper::checkAuth($request->header('Authorization'));
     if($secure_request === false) {
+      //If is not valid then will return 401 Not Authorized
       return response()->json(['success' => false, 'error_code'=> 401, 'error_msg' => 'Not authorized']);
     }
+    //if its valid it will continue in the next
     return $next($request);
   }
 }
